@@ -10,15 +10,17 @@ bot = Bot(token = api)
 dp = Dispatcher(bot, storage = MemoryStorage())
 
 
-start_menu = ReplyKeyboardMarkup(resize_keyboard = True)
-button1 = KeyboardButton(text = 'Рассчитать')
-button2 = KeyboardButton(text = 'Информация')
-start_menu.row(button1, button2)
+start_menu = ReplyKeyboardMarkup(
+    keyboard =[
+        [KeyboardButton(text = 'Рассчитать'),
+        KeyboardButton(text = 'Информация')]
+], resize_keyboard = True
+)
 
 kb = InlineKeyboardMarkup()
-inl_button1 = InlineKeyboardButton(text = "Рассчитать норму калорий", callback_data = 'colories')
-inl_button2 = InlineKeyboardButton(text = "Формулы расчёта", callback_data = 'formulas')
-kb.row(inl_button1, inl_button2)
+button1 = InlineKeyboardButton(text = "Рассчитать норму калорий", callback_data = 'colories')
+button2 = InlineKeyboardButton(text = "Формулы расчёта", callback_data = 'formulas')
+kb.row(button1, button2)
 
 
 class UserState(StatesGroup):
